@@ -1,5 +1,7 @@
 import { scale, verticalScale } from "@/utils/styling";
 
+//Standard theme color for the app.
+
 export const colors = {
   primary: "#facc15",
   primaryLight: "#fef08a",
