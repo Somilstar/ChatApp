@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    // Environment Settings
+    "module": "NodeNext",            // <-- Must match moduleResolution
+    "target": "ESNext",
+    "moduleResolution": "NodeNext",  // <-- Node-style ES module resolution
+    "types": ["node"],               // <-- Recognize Node built-ins
+
+    // Other Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Recommended Options
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": false,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
