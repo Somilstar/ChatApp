@@ -11,6 +11,7 @@ import { UsersIcon } from 'phosphor-react-native'
 import { verticalScale } from '@/utils/styling'
 import { useRouter } from 'expo-router'
 import Button from '@/components/Button'
+import { useAuth } from '@/contexts/authContexts'
 
 // Register component is used for user registration
 // It includes a KeyboardAvoidingView to handle keyboard interactions on mobile devices
@@ -25,13 +26,27 @@ const Register = () => {
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
 
-    const handleSubmit = async () => {
-        if(!nameRef.current || !emailRef.current || !passwordRef.current){
-            Alert.alert("Sign Up","Please fill all the fields");
-            return;
-        }
-        // go ahead with the registration process
+    // Function to handle the registration process
+    const {signUp} = useAuth();
+
+   // ...existing code...
+const handleSubmit = async () => {
+    if (!nameRef.current || !emailRef.current || !passwordRef.current) {
+        Alert.alert("Sign Up", "Please fill all the fields");
+        return;
     }
+
+    try {
+        setIsLoading(true);
+        await signUp(emailRef.current, passwordRef.current, nameRef.current, "");
+    } catch (error: any) {
+       Alert.alert("Registration Error", error.message);
+        // If backend provides a message, show it
+    } finally {
+        setIsLoading(false);
+    }
+}
+// ...existing code...
 
   return (
     <KeyboardAvoidingView style={{flex:1}} behavior= {Platform.OS == 'ios'? "padding": "height"} >
